@@ -160,104 +160,47 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" 
-               style={{ 
-                 background: 'linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%)',
-                 backgroundImage: 'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px)',
-                 backgroundSize: '20px 20px'
-               }}>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-4 h-4 border-2 border-white transform rotate-45"></div>
-          <div className="absolute top-32 left-32 w-3 h-3 border-2 border-white transform rotate-45"></div>
-          <div className="absolute top-40 left-16 w-2 h-2 border-2 border-white transform rotate-45"></div>
-          <div className="absolute top-60 left-40 w-3 h-3 border-2 border-white transform rotate-45"></div>
-          <div className="absolute top-80 left-24 w-2 h-2 border-2 border-white transform rotate-45"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="home" className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* We Are Open Now Badge */}
-            <div className="inline-block px-6 py-3 rounded-full text-white text-lg font-bold mb-8 bg-yellow-500">
-              WE ARE OPEN NOW
-            </div>
-            
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-yellow-400 leading-tight">
-              CRICKET
-              <br />
-              EQUIPMENT
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-yellow-500 uppercase">
+              CRICKET EQUIPMENT
             </h1>
             
-            {/* Specialization Text */}
-            <div className="space-y-4 mb-12">
-              <p className="text-2xl md:text-3xl font-bold text-yellow-400 uppercase">
-                SPECIALIZING IN CUSTOM BATS & JERSEYS
-              </p>
-              <p className="text-xl md:text-2xl font-semibold text-white uppercase">
-                IPL, INDIAN TEAM & CUSTOM JERSEYS
-              </p>
-              <p className="text-lg md:text-xl font-semibold text-white uppercase">
-                &quot;TRY BATS BEFORE YOU BUY&quot;
-              </p>
-            </div>
+            {/* Tagline */}
+            <p className="text-xl md:text-2xl font-semibold text-yellow-500 uppercase mb-12">
+              SPECIALIZING IN CUSTOM BATS & JERSEYS
+            </p>
 
-            {/* Sports Equipment Visual */}
-            <div className="relative mb-12">
-              <div className="flex justify-center items-center space-x-8 md:space-x-16">
-                {/* Cricket Bat */}
-                <div className="relative">
-                  <div className="w-16 h-32 bg-amber-600 rounded-lg transform rotate-12 shadow-2xl"></div>
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-red-500 rounded-full"></div>
-                </div>
-                
-                {/* Cricket Ball */}
-                <div className="w-8 h-8 bg-red-500 rounded-full shadow-lg relative">
-                  <div className="absolute inset-0 border border-white rounded-full"></div>
-                  <div className="absolute inset-1 border border-white rounded-full"></div>
-                </div>
-                
-                {/* Cricket Helmet */}
-                <div className="w-20 h-16 bg-blue-800 rounded-lg shadow-2xl relative">
-                  <div className="absolute top-2 left-2 right-2 h-8 bg-blue-900 rounded"></div>
-                  <div className="absolute bottom-2 left-4 right-4 h-2 bg-gray-400 rounded"></div>
-                </div>
-                
-                {/* Cricket Gloves */}
-                <div className="w-12 h-16 bg-white rounded-lg shadow-lg relative">
-                  <div className="absolute inset-1 border-2 border-red-500 rounded"></div>
-                </div>
+            {/* Sports Equipment Icons */}
+            <div className="flex justify-center items-center space-x-8 mb-12">
+              {/* Cricket Bat */}
+              <div className="w-8 h-16 bg-orange-500 rounded-lg transform rotate-12 relative">
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-4 bg-red-500 rounded-full"></div>
               </div>
+              
+              {/* Cricket Ball */}
+              <div className="w-6 h-6 bg-red-500 rounded-full"></div>
+              
+              {/* Cricket Helmet */}
+              <div className="w-12 h-8 bg-blue-500 rounded-lg relative">
+                <div className="absolute top-1 left-1 right-1 h-3 bg-blue-300 rounded"></div>
+              </div>
+              
+              {/* Cricket Gloves */}
+              <div className="w-6 h-8 border-2 border-red-500 rounded-lg"></div>
             </div>
             
             {/* Call to Action */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="relative px-12 py-6 text-white font-bold text-xl uppercase bg-yellow-500 hover:bg-yellow-600 transform hover:scale-105 transition-all duration-300 shadow-2xl"
-                      style={{
-                        clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)'
-                      }}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="px-8 py-4 bg-yellow-500 text-white font-bold text-lg uppercase hover:bg-yellow-600 transition-colors">
                 SHOP NOW
               </button>
               
-              <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg text-lg hover:bg-white hover:text-blue-900 transition-all duration-300">
+              <button className="px-8 py-4 text-blue-600 font-semibold text-lg hover:text-blue-800 transition-colors">
                 Get Early Access
               </button>
-            </div>
-
-            {/* Contact Info */}
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-              <div className="flex items-center justify-center space-x-2">
-                <EnvelopeIcon className="w-6 h-6" />
-                <span className="text-lg font-semibold">www.gullysports.store</span>
-              </div>
-              <div className="flex items-center justify-center space-x-2">
-                <PhoneIcon className="w-6 h-6" />
-                <span className="text-lg font-semibold">408 677 0734</span>
-              </div>
-              <div className="flex items-center justify-center space-x-2">
-                <MapPinIcon className="w-6 h-6" />
-                <span className="text-lg font-semibold">We ship across the US!</span>
-              </div>
             </div>
           </div>
         </div>
