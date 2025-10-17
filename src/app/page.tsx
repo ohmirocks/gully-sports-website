@@ -159,36 +159,57 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Banner Section */}
-      <section id="home" className="relative bg-gray-100">
-        <div className="w-full flex justify-center">
-          <img 
-            src="/banner.png" 
-            alt="Gully Sports - We Are Live! Your New Cricket & Sports Hub" 
-            className="max-w-full h-auto object-contain"
-          />
+      {/* Main Banner Section */}
+      <section id="home" className="relative bg-gradient-to-b from-blue-50 to-gray-100 py-8">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">
+            Welcome to Gully Sports
+          </h2>
+          <div className="w-full flex justify-center">
+            <img 
+              src="/banner.png" 
+              alt="Gully Sports - We Are Live! Your New Cricket & Sports Hub" 
+              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
       {/* Jersey Sale Section */}
-      <section className="relative bg-gray-100">
-        <div className="w-full flex justify-center">
-          <img 
-            src="/Jersey_sale.png" 
-            alt="Gully Sports Jersey Sale - Premium Cricket Jerseys" 
-            className="max-w-full h-auto object-contain"
-          />
+      <section className="relative bg-gradient-to-b from-gray-100 to-blue-50 py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-blue-800">
+            Premium Cricket Jerseys
+          </h2>
+          <p className="text-lg text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            Authentic jerseys from IPL teams, Indian national team, and more. Available in all sizes with fast shipping across the US.
+          </p>
+          <div className="w-full flex justify-center">
+            <img 
+              src="/Jersey_sale.png" 
+              alt="Gully Sports Jersey Sale - Premium Cricket Jerseys" 
+              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
       {/* Custom Bat Section */}
-      <section className="relative bg-gray-100">
-        <div className="w-full flex justify-center">
-          <img 
-            src="/custom_bat_banner.png" 
-            alt="Gully Sports Custom Bats - Tailored to Your Profile & Preference" 
-            className="max-w-full h-auto object-contain"
-          />
+      <section className="relative bg-gradient-to-b from-blue-50 to-gray-100 py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">
+            Custom Cricket Bats
+          </h2>
+          <p className="text-lg text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            Handcrafted bats tailored to your profile and preferences. Try before you buy with our unique rental program.
+          </p>
+          <div className="w-full flex justify-center">
+            <img 
+              src="/custom_bat_banner.png" 
+              alt="Gully Sports Custom Bats - Tailored to Your Profile & Preference" 
+              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
