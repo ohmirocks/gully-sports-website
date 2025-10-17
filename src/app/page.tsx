@@ -160,35 +160,113 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="py-20" style={{ backgroundColor: currentPalette.accent }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden"
+               style={{ 
+                 background: 'linear-gradient(180deg, #3b82f6 0%, #1e40af 50%, #1e3a8a 100%)'
+               }}>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-2 h-2 bg-white transform rotate-45"></div>
+          <div className="absolute top-32 left-32 w-1 h-1 bg-white transform rotate-45"></div>
+          <div className="absolute top-40 left-16 w-3 h-3 border border-white transform rotate-45"></div>
+          <div className="absolute top-60 left-40 w-2 h-2 bg-white transform rotate-45"></div>
+          <div className="absolute top-80 left-24 w-1 h-1 bg-white transform rotate-45"></div>
+          <div className="absolute top-40 right-20 w-2 h-2 bg-white transform rotate-45"></div>
+          <div className="absolute top-60 right-32 w-1 h-1 bg-white transform rotate-45"></div>
+          <div className="absolute top-80 right-16 w-3 h-3 border border-white transform rotate-45"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <div className="inline-block px-4 py-2 rounded-full text-white text-sm font-medium mb-6"
-                 style={{ backgroundColor: currentPalette.primary }}>
-              Now Available: Premium Cricket Jerseys
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{ color: currentPalette.text }}>
-              Your Premier Destination for Cricket Accessories
+            {/* Main Headlines */}
+            <h1 className="text-6xl md:text-8xl font-bold mb-4 text-yellow-400 uppercase leading-tight">
+              WE ARE LIVE!
             </h1>
             
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Shop authentic cricket jerseys today. Get notified when we launch custom bats, 
-              protective gear, and more premium cricket accessories.
-            </p>
+            <h2 className="text-2xl md:text-4xl font-bold mb-12 text-white uppercase">
+              YOUR NEW CRICKET & SPORTS HUB IS HERE!
+            </h2>
+
+            {/* Cricket Equipment Layout */}
+            <div className="relative mb-16">
+              <div className="flex justify-center items-center space-x-8 md:space-x-16">
+                {/* Cricket Helmet */}
+                <div className="w-20 h-16 bg-blue-800 rounded-lg shadow-2xl relative">
+                  <div className="absolute top-2 left-2 right-2 h-8 bg-blue-900 rounded"></div>
+                  <div className="absolute bottom-2 left-4 right-4 h-2 bg-gray-400 rounded"></div>
+                </div>
+                
+                {/* Cricket Bats (Crossed) */}
+                <div className="relative">
+                  <div className="w-16 h-32 bg-amber-600 rounded-lg transform rotate-12 shadow-2xl relative">
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-red-500 rounded-full"></div>
+                    <div className="absolute top-4 left-2 right-2 h-1 bg-white rounded"></div>
+                    <div className="absolute top-8 left-2 right-2 h-1 bg-white rounded"></div>
+                  </div>
+                  <div className="absolute top-0 left-0 w-16 h-32 bg-amber-600 rounded-lg transform -rotate-12 shadow-2xl">
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-red-500 rounded-full"></div>
+                    <div className="absolute top-4 left-2 right-2 h-1 bg-white rounded"></div>
+                    <div className="absolute top-8 left-2 right-2 h-1 bg-white rounded"></div>
+                  </div>
+                </div>
+                
+                {/* Cricket Ball */}
+                <div className="w-8 h-8 bg-red-500 rounded-full shadow-lg relative">
+                  <div className="absolute inset-0 border border-white rounded-full"></div>
+                  <div className="absolute inset-1 border border-white rounded-full"></div>
+                </div>
+                
+                {/* Cricket Gloves */}
+                <div className="w-12 h-16 bg-white rounded-lg shadow-lg relative">
+                  <div className="absolute inset-1 border-2 border-red-500 rounded"></div>
+                  <div className="absolute top-2 left-2 right-2 h-1 bg-red-500 rounded"></div>
+                </div>
+                
+                {/* Kit Bag */}
+                <div className="w-16 h-20 bg-red-500 rounded-lg shadow-2xl relative">
+                  <div className="absolute top-2 left-2 right-2 h-4 bg-red-600 rounded"></div>
+                  <div className="absolute top-6 left-4 right-4 h-1 bg-white rounded"></div>
+                  <div className="absolute top-8 left-4 right-4 h-1 bg-white rounded"></div>
+                </div>
+              </div>
+            </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 text-white font-semibold rounded-lg text-lg"
-                      style={{ backgroundColor: currentPalette.primary }}>
-                Shop Jerseys Now
-              </button>
-              <button className="px-8 py-4 border-2 font-semibold rounded-lg text-lg"
-                      style={{ 
-                        borderColor: currentPalette.primary, 
-                        color: currentPalette.primary 
+            {/* Call to Action */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+              <button className="relative px-12 py-6 text-black font-bold text-xl uppercase bg-yellow-400 hover:bg-yellow-300 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+                      style={{
+                        clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)'
                       }}>
-                Get Early Access
+                SHOP NOW
               </button>
+            </div>
+
+            {/* White Bar with Product Info */}
+            <div className="bg-white py-6 px-8 rounded-lg shadow-2xl mb-8">
+              <p className="text-lg md:text-xl font-bold text-black">
+                Experience <span className="text-yellow-500">HIGH-QUALITY</span> Custom Bats & Official Jerseys! 
+                <br />
+                IPL, Indian Team & More
+              </p>
+            </div>
+
+            {/* Footer Contact Info */}
+            <div className="bg-blue-900 py-6 px-8 rounded-lg shadow-2xl">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
+                <div className="flex items-center justify-center space-x-2">
+                  <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-blue-900 rounded-full"></div>
+                  </div>
+                  <span className="text-lg font-semibold">www.gullysports.store</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2">
+                  <PhoneIcon className="w-6 h-6" />
+                  <span className="text-lg font-semibold">Call/WhatsApp: 408 677 0734</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2">
+                  <span className="text-lg font-semibold">© 2024 Gully Sports LLC.</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
