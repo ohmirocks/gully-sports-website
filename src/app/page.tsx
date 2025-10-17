@@ -160,12 +160,12 @@ export default function HomePage() {
       </header>
 
       {/* Banner Section */}
-      <section id="home" className="relative">
-        <div className="w-full">
+      <section id="home" className="relative bg-gray-100">
+        <div className="w-full flex justify-center">
           <img 
             src="/banner.png" 
             alt="Gully Sports - We Are Live! Your New Cricket & Sports Hub" 
-            className="w-full h-auto object-cover"
+            className="max-w-full h-auto object-contain"
           />
         </div>
       </section>
