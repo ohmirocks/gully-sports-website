@@ -277,7 +277,7 @@ export default function HomePage() {
               Exciting Launches Ahead
             </h2>
             <p className="text-xl text-gray-600">
-              We're expanding our collection with premium cricket accessories. Be the first to know when they launch!
+              We&apos;re expanding our collection with premium cricket accessories. Be the first to know when they launch!
             </p>
           </div>
 
@@ -352,7 +352,7 @@ export default function HomePage() {
               Why Choose Gully Sports?
             </h2>
             <p className="text-xl text-gray-600">
-              We're different from other cricket equipment stores
+              We&apos;re different from other cricket equipment stores
             </p>
           </div>
 
@@ -539,7 +539,7 @@ export default function HomePage() {
                   <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0 text-green-600" />
                   <div>
                     <p className="font-semibold text-gray-900">Try Before You Buy</p>
-                    <p className="text-gray-600 text-sm">Take advantage of our "Try Bats Before You Buy" policy to ensure the perfect fit.</p>
+                    <p className="text-gray-600 text-sm">Take advantage of our &quot;Try Bats Before You Buy&quot; policy to ensure the perfect fit.</p>
                   </div>
                 </div>
                 
