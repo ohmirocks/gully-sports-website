@@ -159,52 +159,6 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section id="home" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            {/* Main Headline */}
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-yellow-500 uppercase">
-              CRICKET EQUIPMENT
-            </h1>
-            
-            {/* Tagline */}
-            <p className="text-xl md:text-2xl font-semibold text-yellow-500 uppercase mb-12">
-              SPECIALIZING IN CUSTOM BATS & JERSEYS
-            </p>
-
-            {/* Sports Equipment Icons */}
-            <div className="flex justify-center items-center space-x-8 mb-12">
-              {/* Cricket Bat */}
-              <div className="w-8 h-16 bg-orange-500 rounded-lg transform rotate-12 relative">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-4 bg-red-500 rounded-full"></div>
-              </div>
-              
-              {/* Cricket Ball */}
-              <div className="w-6 h-6 bg-red-500 rounded-full"></div>
-              
-              {/* Cricket Helmet */}
-              <div className="w-12 h-8 bg-blue-500 rounded-lg relative">
-                <div className="absolute top-1 left-1 right-1 h-3 bg-blue-300 rounded"></div>
-              </div>
-              
-              {/* Cricket Gloves */}
-              <div className="w-6 h-8 border-2 border-red-500 rounded-lg"></div>
-            </div>
-            
-            {/* Call to Action */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="px-8 py-4 bg-yellow-500 text-white font-bold text-lg uppercase hover:bg-yellow-600 transition-colors">
-                SHOP NOW
-              </button>
-              
-              <button className="px-8 py-4 text-blue-600 font-semibold text-lg hover:text-blue-800 transition-colors">
-                Get Early Access
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Available Now Section */}
       <section className="py-20">
