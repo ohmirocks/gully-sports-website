@@ -170,6 +170,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Jersey Sale Section */}
+      <section className="relative bg-gray-100">
+        <div className="w-full flex justify-center">
+          <img 
+            src="/Jersey_sale.png" 
+            alt="Gully Sports Jersey Sale - Premium Cricket Jerseys" 
+            className="max-w-full h-auto object-contain"
+          />
+        </div>
+      </section>
+
+      {/* Custom Bat Section */}
+      <section className="relative bg-gray-100">
+        <div className="w-full flex justify-center">
+          <img 
+            src="/custom_bat_banner.png" 
+            alt="Gully Sports Custom Bats - Tailored to Your Profile & Preference" 
+            className="max-w-full h-auto object-contain"
+          />
+        </div>
+      </section>
+
       {/* Available Now Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
