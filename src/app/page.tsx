@@ -111,7 +111,11 @@ export default function HomePage() {
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <div className="flex items-center">
-              <GullySportsLogo size="md" />
+              <img 
+                src="/logo.webp" 
+                alt="Gully Sports Logo" 
+                className="h-12 w-auto"
+              />
             </div>
 
             {/* Desktop Navigation */}
@@ -655,7 +659,12 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <GullySportsLogo size="sm" showText={true} />
+                <img 
+                  src="/logo.webp" 
+                  alt="Gully Sports Logo" 
+                  className="h-8 w-auto"
+                />
+                <span className="text-xl font-bold text-white">Gully Sports</span>
               </div>
               <p className="text-gray-300">
                 Your premier destination for cricket and sports recreation.
