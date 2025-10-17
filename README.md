@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gully Sports Website
+
+A modern, responsive homepage for Gully Sports cricket equipment business built with Next.js and Tailwind CSS.
+
+## Features
+
+- **Dynamic Color Palettes**: Switch between 4 different color themes (Red, Green, Teal, Gray)
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **Interactive FAQ Section**: Expandable questions and answers
+- **Product Showcase**: Current and upcoming products
+- **Early Access Signup**: Newsletter subscription form
+- **Contact Information**: Complete business details
+
+## Color Palettes
+
+The website includes 4 different color themes based on your design system:
+
+1. **Red Theme** (Default): Primary red (#DC2626) with light red accents
+2. **Green Theme**: Primary green (#16A34A) with light green accents  
+3. **Teal Theme**: Primary teal (#0D9488) with light teal accents
+4. **Gray Theme**: Primary gray (#6B7280) with light gray accents
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Color Palette Switching
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Look for the color palette selector in the top-right corner
+- Click on any color circle to switch themes
+- The entire website will update with the new color scheme
 
-## Learn More
+## Sections Included
 
-To learn more about Next.js, take a look at the following resources:
+- **Hero Section**: Main banner with call-to-action buttons
+- **Available Now**: Current product offerings (jerseys)
+- **Coming Soon**: Upcoming products (custom bats, lane rentals, training equipment)
+- **Why Choose Us**: Differentiators and unique selling points
+- **FAQ Section**: Common questions and answers
+- **Early Access**: Newsletter signup with interest preferences
+- **Footer**: Contact information and quick links
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Business Information
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Website**: www.gullysports.store
+- **Phone**: 408 677 0734
+- **Location**: San Jose, CA, USA
+- **Specialties**: Custom cricket bats, IPL jerseys, Indian team jerseys
 
-## Deploy on Vercel
+## Key Differentiators
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Try bats before you buy
+- Specialized in cricket equipment only
+- Custom bat personalization
+- Expert cricket knowledge
+- Fast shipping across the US
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technologies Used
+
+- Next.js 15
+- React 18
+- TypeScript
+- Tailwind CSS
+- Heroicons
+- Responsive design principles
+
+## Customization
+
+To modify colors, update the `colorPalettes` object in `src/app/page.tsx`. Each palette includes:
+- `primary`: Main brand color
+- `secondary`: Light accent color
+- `accent`: Background accent color
+- `text`: Text color
+- `background`: Background color
