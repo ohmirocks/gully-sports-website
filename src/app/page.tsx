@@ -159,6 +159,40 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* Hero Section */}
+      <section id="home" className="py-20" style={{ backgroundColor: currentPalette.accent }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="inline-block px-4 py-2 rounded-full text-white text-sm font-medium mb-6"
+                 style={{ backgroundColor: currentPalette.primary }}>
+              Now Available: Premium Cricket Jerseys
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{ color: currentPalette.text }}>
+              Your Premier Destination for Cricket Accessories
+            </h1>
+            
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Shop authentic cricket jerseys today. Get notified when we launch custom bats, 
+              protective gear, and more premium cricket accessories.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="px-8 py-4 text-white font-semibold rounded-lg text-lg"
+                      style={{ backgroundColor: currentPalette.primary }}>
+                Shop Jerseys Now
+              </button>
+              <button className="px-8 py-4 border-2 font-semibold rounded-lg text-lg"
+                      style={{ 
+                        borderColor: currentPalette.primary, 
+                        color: currentPalette.primary 
+                      }}>
+                Get Early Access
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Available Now Section */}
       <section className="py-20">
