@@ -114,7 +114,7 @@ export default function HomePage() {
               <img 
                 src="/logo.webp" 
                 alt="Gully Sports Logo" 
-                className="h-12 w-auto"
+                className="h-12 w-auto rounded-full"
               />
             </div>
 
@@ -662,7 +662,7 @@ export default function HomePage() {
                 <img 
                   src="/logo.webp" 
                   alt="Gully Sports Logo" 
-                  className="h-8 w-auto"
+                  className="h-8 w-auto rounded-full"
                 />
                 <span className="text-xl font-bold text-white">Gully Sports</span>
               </div>
