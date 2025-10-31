@@ -5,10 +5,6 @@ import Link from 'next/link';
 import { 
   ShoppingCartIcon, 
   TruckIcon, 
-  ShieldCheckIcon, 
-  StarIcon,
-  CheckIcon,
-  XMarkIcon,
   Bars3Icon,
   PhoneIcon,
   EnvelopeIcon,
@@ -16,50 +12,10 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon
 } from '@heroicons/react/24/outline';
-import GullySportsLogo from '../components/GullySportsLogo';
-
-// Color palette configurations
-const colorPalettes = {
-  palette1: {
-    name: 'Red Theme',
-    primary: '#DC2626',
-    secondary: '#FEE2E2',
-    accent: '#FEF2F2',
-    text: '#1F2937',
-    background: '#FFFFFF'
-  },
-  palette2: {
-    name: 'Green Theme',
-    primary: '#16A34A',
-    secondary: '#DCFCE7',
-    accent: '#F0FDF4',
-    text: '#1F2937',
-    background: '#FFFFFF'
-  },
-  palette3: {
-    name: 'Teal Theme',
-    primary: '#0D9488',
-    secondary: '#CCFBF1',
-    accent: '#F0FDFA',
-    text: '#1F2937',
-    background: '#FFFFFF'
-  },
-  palette4: {
-    name: 'Gray Theme',
-    primary: '#6B7280',
-    secondary: '#F3F4F6',
-    accent: '#F9FAFB',
-    text: '#1F2937',
-    background: '#FFFFFF'
-  }
-};
 
 export default function HomePage() {
-  const [selectedPalette, setSelectedPalette] = useState('palette1');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const currentPalette = colorPalettes[selectedPalette as keyof typeof colorPalettes];
 
   // Sample product data
   const products = [
@@ -254,7 +210,7 @@ export default function HomePage() {
               Why Choose Gully Sports?
             </h2>
             <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
-              We're not just another sports store. We're your cricket equipment partner with unique offerings you won't find anywhere else.
+              We&apos;re not just another sports store. We&apos;re your cricket equipment partner with unique offerings you won&apos;t find anywhere else.
             </p>
           </div>
 
@@ -319,7 +275,7 @@ export default function HomePage() {
                 <div className="space-y-5 text-sm md:text-base text-gray-700">
                   <div className="flex items-start gap-3">
                     <span className="text-orange-600 text-lg font-semibold mt-0.5">✓</span>
-                    <p className="leading-relaxed"><strong className="text-gray-900">Kids' Kit Bags:</strong> Complete, high-quality sets to get your young star started.</p>
+                    <p className="leading-relaxed"><strong className="text-gray-900">Kids&apos; Kit Bags:</strong> Complete, high-quality sets to get your young star started.</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-orange-600 text-lg font-semibold mt-0.5">✓</span>
