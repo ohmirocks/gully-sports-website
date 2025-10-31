@@ -629,7 +629,8 @@ export default function HomePage() {
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
                 <a href="#shop" className="block text-gray-300 hover:text-white">Shop</a>
-                <Link href="/policies" className="block text-gray-300 hover:text-white">FAQ & Policies</Link>
+                <Link href="/faq" className="block text-gray-300 hover:text-white">FAQ</Link>
+                <Link href="/returns" className="block text-gray-300 hover:text-white">Exchange & Returns</Link>
                 <a href="#contact" className="block text-gray-300 hover:text-white">Contact</a>
               </div>
             </div>
