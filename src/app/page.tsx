@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { 
   ShoppingCartIcon, 
   TruckIcon, 
@@ -56,7 +57,6 @@ const colorPalettes = {
 export default function HomePage() {
   const [selectedPalette, setSelectedPalette] = useState('palette1');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isFaqOpen, setIsFaqOpen] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const currentPalette = colorPalettes[selectedPalette as keyof typeof colorPalettes];
@@ -128,62 +128,32 @@ export default function HomePage() {
     setCurrentSlide(index);
   };
 
-  const faqs = [
-    {
-      question: "Why should I buy from Gully Sports?",
-      answer: "We specialize in authentic cricket equipment with custom bats and jerseys. Our 'Try Bats Before You Buy' policy ensures you get the perfect fit. We offer IPL, Indian team, and custom jerseys with fast shipping across the US."
-    },
-    {
-      question: "What makes Gully Sports different from other stores?",
-      answer: "We're not just another sports store. We specialize exclusively in cricket equipment, offer custom bat personalization, have a try-before-you-buy policy, and provide expert cricket knowledge. Our focus is on quality and customer satisfaction."
-    },
-    {
-      question: "Do you offer custom cricket bats?",
-      answer: "Yes! We specialize in custom cricket bats where you can choose wood type, weight, grip, and personalized engravings. Our handcrafted bats are made to your exact specifications."
-    },
-    {
-      question: "What sizes are available for jerseys?",
-      answer: "We offer jerseys in sizes S, M, L, XL, and 2XL to ensure the perfect fit for every player. Our jerseys are available for IPL teams, Indian national team, and custom designs."
-    },
-    {
-      question: "Do you ship across the US?",
-      answer: "Yes! We ship across the entire United States with fast and secure delivery to get your cricket equipment ready for your next match."
-    },
-    {
-      question: "Can I try bats before purchasing?",
-      answer: "Absolutely! Our unique 'Try Bats Before You Buy' policy allows you to test our cricket bats to ensure you get the perfect one for your playing style."
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <div className="flex items-center">
+            {/* Logo and Brand Name */}
+            <div className="flex items-center gap-3 flex-1">
               <img 
                 src="/logo.webp" 
                 alt="Gully Sports Logo" 
-                className="h-12 w-auto rounded-full"
+                className="h-12 w-12 rounded-full"
               />
+              <span className="text-lg font-medium text-gray-800">Gully Sports</span>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-gray-900 font-medium">Home</a>
-              <a href="#shop" className="text-gray-700 hover:text-gray-900 font-medium">Shop</a>
-              <a href="#about" className="text-gray-700 hover:text-gray-900 font-medium">About</a>
-              <a href="#returns" className="text-gray-700 hover:text-gray-900 font-medium">Returns</a>
-              <a href="#contact" className="text-gray-700 hover:text-gray-900 font-medium">Contact</a>
+            {/* Desktop Navigation - Centered */}
+            <nav className="hidden md:flex items-center justify-center space-x-8 flex-1">
+              <a href="#home" className="text-gray-900 font-bold">Home</a>
+              <a href="#shop" className="text-gray-500 font-normal">Shop</a>
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center space-x-4">
-              <button className="px-6 py-2 text-white font-medium rounded-lg"
-                      style={{ backgroundColor: currentPalette.primary }}>
-                Sign In
+            {/* Sign In Button */}
+            <div className="hidden md:flex items-center justify-end flex-1">
+              <button className="px-6 py-2 bg-black text-white font-medium rounded-lg hover:bg-gray-800 transition-colors">
+                Sign in
               </button>
             </div>
 
@@ -192,7 +162,7 @@ export default function HomePage() {
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <Bars3Icon className="h-6 w-6" />
+              <Bars3Icon className="h-6 w-6 text-gray-900" />
             </button>
           </div>
 
@@ -200,14 +170,10 @@ export default function HomePage() {
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t">
               <div className="flex flex-col space-y-4">
-                <a href="#home" className="text-gray-700 hover:text-gray-900 font-medium">Home</a>
-                <a href="#shop" className="text-gray-700 hover:text-gray-900 font-medium">Shop</a>
-                <a href="#about" className="text-gray-700 hover:text-gray-900 font-medium">About</a>
-                <a href="#returns" className="text-gray-700 hover:text-gray-900 font-medium">Returns</a>
-                <a href="#contact" className="text-gray-700 hover:text-gray-900 font-medium">Contact</a>
-                <button className="px-6 py-2 text-white font-medium rounded-lg w-fit"
-                        style={{ backgroundColor: currentPalette.primary }}>
-                  Sign In
+                <a href="#home" className="text-gray-900 font-bold">Home</a>
+                <a href="#shop" className="text-gray-500 font-normal">Shop</a>
+                <button className="px-6 py-2 bg-black text-white font-medium rounded-lg w-fit">
+                  Sign in
                 </button>
               </div>
             </div>
@@ -576,170 +542,66 @@ export default function HomePage() {
       </section>
 
 
-      {/* FAQ Section */}
-      <section className="py-20" style={{ backgroundColor: currentPalette.accent }}>
+      {/* Early Access Interest Form */}
+      <section className="py-20 bg-black text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: currentPalette.text }}>
-              Frequently Asked Questions
+          <div className="text-center mb-12">
+            <div className="mb-6 flex justify-center">
+              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Get Early Access
             </h2>
-            <p className="text-xl text-gray-600">
-              Everything you need to know about Gully Sports
+            <p className="text-xl text-gray-300 mb-4">
+              Join our exclusive list and be the first to know when we launch new products
+            </p>
+            <p className="text-lg text-gray-300">
+              Plus, get 10% off your first purchase of any new product!
             </p>
           </div>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm">
-                <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center"
-                  onClick={() => setIsFaqOpen(isFaqOpen === index ? null : index)}
-                >
-                  <span className="font-semibold" style={{ color: currentPalette.text }}>
-                    {faq.question}
-                  </span>
-                  {isFaqOpen === index ? (
-                    <XMarkIcon className="w-5 h-5" style={{ color: currentPalette.primary }} />
-                  ) : (
-                    <div className="w-5 h-5" style={{ color: currentPalette.primary }}>
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 13H5v-2h14v2z"/>
-                      </svg>
-                    </div>
-                  )}
-                </button>
-                {isFaqOpen === index && (
-                  <div className="px-6 pb-4">
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Return Policy Section */}
-      <section id="returns" className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: currentPalette.text }}>
-              Return & Exchange Policy
-            </h2>
-            <p className="text-xl text-gray-600">
-              Our commitment to your satisfaction with clear return guidelines
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Jersey Returns */}
-            <div className="bg-white rounded-xl shadow-lg p-8 border-l-4" style={{ borderLeftColor: currentPalette.primary }}>
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4"
-                     style={{ backgroundColor: currentPalette.secondary }}>
-                  <ShoppingCartIcon className="w-6 h-6" style={{ color: currentPalette.primary }} />
-                </div>
-                <h3 className="text-xl font-bold" style={{ color: currentPalette.text }}>
-                  Jersey Returns & Exchanges
-                </h3>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: currentPalette.primary }} />
-                  <div>
-                    <p className="font-semibold text-gray-900">Size Exchange Only</p>
-                    <p className="text-gray-600 text-sm">We only accept exchanges for size issues, not for style changes or general returns.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: currentPalette.primary }} />
-                  <div>
-                    <p className="font-semibold text-gray-900">Original Tags Required</p>
-                    <p className="text-gray-600 text-sm">Jerseys must be returned with all original tags attached and in unworn condition.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: currentPalette.primary }} />
-                  <div>
-                    <p className="font-semibold text-gray-900">Return Shipping</p>
-                    <p className="text-gray-600 text-sm">Return shipping costs are the responsibility of the buyer.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: currentPalette.primary }} />
-                  <div>
-                    <p className="font-semibold text-gray-900">Time Limit</p>
-                    <p className="text-gray-600 text-sm">Exchange requests must be made within 14 days of delivery.</p>
-                  </div>
-                </div>
-              </div>
+          <div className="bg-gray-900 rounded-xl p-8 md:p-10 max-w-2xl mx-auto">
+            <h3 className="text-xl font-semibold mb-6">What interests you most?</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+              {['Custom Cricket Bats', 'Cricket Lane Rentals', 'Training Equipment', 'New Product Launches', 'Exclusive Discounts'].map((interest) => (
+                <label key={interest} className="flex items-center space-x-2 text-left cursor-pointer hover:text-blue-300 transition-colors">
+                  <input type="checkbox" className="rounded cursor-pointer" />
+                  <span className="text-sm text-gray-300">{interest}</span>
+                </label>
+              ))}
             </div>
-
-            {/* Custom Bats Policy */}
-            <div className="bg-white rounded-xl shadow-lg p-8 border-l-4" style={{ borderLeftColor: '#DC2626' }}>
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4 bg-red-100">
-                  <XMarkIcon className="w-6 h-6 text-red-600" />
-                </div>
-                <h3 className="text-xl font-bold" style={{ color: currentPalette.text }}>
-                  Custom Cricket Bats
-                </h3>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <XMarkIcon className="w-5 h-5 mt-1 flex-shrink-0 text-red-600" />
-                  <div>
-                    <p className="font-semibold text-gray-900">No Returns Accepted</p>
-                    <p className="text-gray-600 text-sm">Custom-made cricket bats are personalized to your specifications and cannot be returned.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0 text-green-600" />
-                  <div>
-                    <p className="font-semibold text-gray-900">Try Before You Buy</p>
-                    <p className="text-gray-600 text-sm">Take advantage of our &quot;Try Bats Before You Buy&quot; policy to ensure the perfect fit.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0 text-green-600" />
-                  <div>
-                    <p className="font-semibold text-gray-900">Custom Specifications</p>
-                    <p className="text-gray-600 text-sm">Each bat is handcrafted to your exact requirements - weight, wood type, grip, and engravings.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <CheckIcon className="w-5 h-5 mt-1 flex-shrink-0 text-green-600" />
-                  <div>
-                    <p className="font-semibold text-gray-900">Quality Assurance</p>
-                    <p className="text-gray-600 text-sm">We ensure the highest quality craftsmanship before shipping your custom bat.</p>
-                  </div>
-                </div>
-              </div>
+            
+            <div className="mb-6">
+              <input
+                type="text"
+                placeholder="Something else"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:border-blue-500"
+              />
             </div>
-          </div>
-
-          {/* Additional Information */}
-          <div className="mt-12 bg-gray-50 rounded-xl p-8">
-            <h3 className="text-xl font-bold mb-4" style={{ color: currentPalette.text }}>
-              Important Information
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold mb-2" style={{ color: currentPalette.text }}>Processing Time</h4>
-                <p className="text-gray-600 text-sm">Exchange requests are processed within 3-5 business days after receiving the returned item.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2" style={{ color: currentPalette.text }}>Contact Us</h4>
-                <p className="text-gray-600 text-sm">For any questions about returns or exchanges, contact us at 408 677 0734 or www.gullysports.store</p>
-              </div>
+            
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <input
+                type="text"
+                placeholder="Your name"
+                className="px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="email"
+                placeholder="Your email"
+                className="px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            
+            <button className="w-full py-4 px-8 font-semibold rounded-lg text-white text-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+              Notify Me
+            </button>
+            
+            <div className="mt-6 text-sm text-gray-400 text-center">
+              ✓ Early access to new launches ✓ Exclusive discounts ✓ No spam, unsubscribe anytime
             </div>
           </div>
         </div>
@@ -767,8 +629,7 @@ export default function HomePage() {
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
                 <a href="#shop" className="block text-gray-300 hover:text-white">Shop</a>
-                <a href="#about" className="block text-gray-300 hover:text-white">About Us</a>
-                <a href="#returns" className="block text-gray-300 hover:text-white">Return Policy</a>
+                <Link href="/policies" className="block text-gray-300 hover:text-white">FAQ & Policies</Link>
                 <a href="#contact" className="block text-gray-300 hover:text-white">Contact</a>
               </div>
             </div>
