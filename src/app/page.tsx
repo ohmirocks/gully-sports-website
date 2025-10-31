@@ -11,7 +11,9 @@ import {
   Bars3Icon,
   PhoneIcon,
   EnvelopeIcon,
-  MapPinIcon
+  MapPinIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon
 } from '@heroicons/react/24/outline';
 import GullySportsLogo from '../components/GullySportsLogo';
 
@@ -55,8 +57,76 @@ export default function HomePage() {
   const [selectedPalette, setSelectedPalette] = useState('palette1');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const currentPalette = colorPalettes[selectedPalette as keyof typeof colorPalettes];
+
+  // Sample product data
+  const products = [
+    {
+      id: 1,
+      name: "Adidas Dream 11 India Cricket ODI Fan Jersey",
+      size: "Large",
+      ageGroup: "Adult",
+      price: 20,
+      image: "/jersey.png"
+    },
+    {
+      id: 2,
+      name: "Adidas Dream 11 India Cricket ODI Fan Jersey",
+      size: "Medium",
+      ageGroup: "Adult",
+      price: 20,
+      image: "/jersey.png"
+    },
+    {
+      id: 3,
+      name: "Adidas Dream 11 India Cricket ODI Fan Jersey",
+      size: "2XL",
+      ageGroup: "Adult",
+      price: 20,
+      image: "/jersey.png"
+    },
+    {
+      id: 4,
+      name: "Adidas Official India T20 World Cup 2024 Fan Jersey",
+      size: "Large",
+      ageGroup: "Adult",
+      price: 17,
+      image: "/jersey.png"
+    },
+    {
+      id: 5,
+      name: "Adidas Official India T20 World Cup 2024 Fan Jersey",
+      size: "Medium",
+      ageGroup: "Adult",
+      price: 17,
+      image: "/jersey.png"
+    },
+    {
+      id: 6,
+      name: "Adidas Official India T20 World Cup 2024 Fan Jersey",
+      size: "XL",
+      ageGroup: "Adult",
+      price: 17,
+      image: "/jersey.png"
+    }
+  ];
+
+  const productsPerSlide = 3;
+  const totalSlides = Math.ceil(products.length / productsPerSlide);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
 
   const faqs = [
     {
@@ -87,24 +157,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Color Palette Selector */}
-      <div className="fixed top-4 right-4 z-50 bg-white rounded-lg shadow-lg p-4 border">
-        <h3 className="text-sm font-semibold mb-2">Color Theme</h3>
-        <div className="flex gap-2">
-          {Object.entries(colorPalettes).map(([key, palette]) => (
-            <button
-              key={key}
-              onClick={() => setSelectedPalette(key)}
-              className={`w-8 h-8 rounded-full border-2 ${
-                selectedPalette === key ? 'border-gray-800' : 'border-gray-300'
-              }`}
-              style={{ backgroundColor: palette.primary }}
-              title={palette.name}
-            />
-          ))}
-        </div>
-      </div>
-
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,277 +215,366 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Main Banner Section */}
-      <section id="home" className="relative bg-gradient-to-b from-blue-50 to-gray-100 py-8">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">
-            Welcome to Gully Sports
-          </h2>
-          <div className="w-full flex justify-center">
-            <img 
-              src="/banner.png" 
-              alt="Gully Sports - We Are Live! Your New Cricket & Sports Hub" 
-              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
-            />
+      {/* Hero Section */}
+      <section id="home" className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 md:py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Top Banner */}
+            <div className="mb-6 flex justify-center">
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full shadow-sm" style={{ backgroundColor: '#E0EDFF' }}>
+                <span className="text-2xl">🎉</span>
+                <span className="text-sm md:text-base font-bold" style={{ color: '#1A42A8' }}>Now Available: Premium Cricket Jerseys</span>
+              </div>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="mb-6 leading-tight">
+              <span className="block text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-3">
+                We are live!
+              </span>
+              <span className="block text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mt-2">
+                Your Premier Destination for
+                <br />
+                Cricket Accessories
+              </span>
+            </h1>
+
+            {/* Description - Bullet Points */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-3xl mx-auto">
+              <div className="flex items-start gap-3">
+                <span className="text-blue-600 text-xl font-bold mt-1">✓</span>
+                <p className="text-base md:text-lg text-gray-700">Experience High-Quality Custom Bats & Official Jerseys!</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-blue-600 text-xl font-bold mt-1">✓</span>
+                <p className="text-base md:text-lg text-gray-700">Shop authentic cricket jerseys today.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-blue-600 text-xl font-bold mt-1">✓</span>
+                <p className="text-base md:text-lg text-gray-700">Get notified when we launch custom bats, protective gear</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-blue-600 text-xl font-bold mt-1">✓</span>
+                <p className="text-base md:text-lg text-gray-700">and more premium cricket accessories.</p>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="#shop"
+                className="px-8 py-3 bg-black hover:bg-gray-800 text-white font-semibold rounded-lg transition-colors duration-200"
+              >
+                Shop Jerseys Now
+              </a>
+              <a 
+                href="#contact"
+                className="px-8 py-3 bg-white hover:bg-gray-50 text-black font-semibold border-2 border-black rounded-lg transition-colors duration-200"
+              >
+                Get Early Access
+              </a>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Jersey Sale Section */}
-      <section className="relative bg-gradient-to-b from-gray-100 to-blue-50 py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-blue-800">
-            Premium Cricket Jerseys
-          </h2>
-          <p className="text-lg text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-            Authentic jerseys from IPL teams, Indian national team, and more. Available in all sizes with fast shipping across the US.
-          </p>
-          <div className="w-full flex justify-center">
-            <img 
-              src="/Jersey_sale.png" 
-              alt="Gully Sports Jersey Sale - Premium Cricket Jerseys" 
-              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
-            />
+      {/* Why Choose Gully Sports Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              Why Choose Gully Sports?
+            </h2>
+            <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
+              We're not just another sports store. We're your cricket equipment partner with unique offerings you won't find anywhere else.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Custom Bat Section */}
-      <section className="relative bg-gradient-to-b from-blue-50 to-gray-100 py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">
-            Custom Cricket Bats
-          </h2>
-          <p className="text-lg text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-            Handcrafted bats tailored to your profile and preferences. Try before you buy with our unique rental program.
-          </p>
-          <div className="w-full flex justify-center">
-            <img 
-              src="/custom_bat_banner.png" 
-              alt="Gully Sports Custom Bats - Tailored to Your Profile & Preference" 
-              className="max-w-full h-auto object-contain rounded-lg shadow-lg"
-            />
+          {/* Features Grid */}
+          <div className="space-y-8">
+            {/* Top Row: Truly Custom Bats (Full Width Left) + Try Before You Buy (Right) */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="md:col-span-2 bg-blue-50 rounded-2xl p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+                  Truly Custom Bats
+                </h2>
+                <p className="text-base md:text-lg text-gray-800 mb-6 leading-relaxed">
+                  Why settle for off-the-shelf? We build <strong className="text-blue-600 font-semibold">YOUR</strong> perfect bat from scratch.
+                </p>
+                <div className="space-y-5 text-base md:text-lg text-gray-700">
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-600 text-2xl font-bold mt-0.5">✓</span>
+                    <p className="leading-relaxed"><strong className="text-gray-900">You choose:</strong> Profile, balance, weight, and handle (short, long, oval, or round)</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-600 text-2xl font-bold mt-0.5">✓</span>
+                    <p className="leading-relaxed"><strong className="text-gray-900">Built-to-Order:</strong> Every bat is freshly made just for you. No pre-made inventory, just pure custom performance.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Try Before You Buy - Right Side */}
+              <div className="bg-green-50 rounded-2xl p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+                  Try Before You Buy
+                </h2>
+                <p className="text-base md:text-lg font-semibold text-green-700 mb-4">
+                  The ultimate game-changer!
+                </p>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  Rent a bat and test it in a real game or net session before you place your custom order. <strong className="text-gray-900">No more guessing</strong> if a bat feels right—experience it first!
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom Row: Rep Your Team (Left) + Everything You Need (Full Width Right) */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  Rep Your Team
+                </h2>
+                <div className="space-y-5 text-sm md:text-base text-gray-700">
+                  <div className="flex items-start gap-3">
+                    <span className="text-purple-600 text-lg font-semibold mt-0.5">✓</span>
+                    <p className="leading-relaxed"><strong className="text-gray-900">Authentic India Jerseys:</strong> Official fan gear for kids and adults in all sizes!</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-purple-600 text-lg font-semibold mt-0.5">✓</span>
+                    <p className="leading-relaxed"><strong className="text-gray-900">Custom Team Jerseys:</strong> Get your local club looking professional with our custom jersey designs.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="md:col-span-2 bg-orange-50 rounded-2xl p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  Everything You Need in One Place
+                </h2>
+                <div className="space-y-5 text-sm md:text-base text-gray-700">
+                  <div className="flex items-start gap-3">
+                    <span className="text-orange-600 text-lg font-semibold mt-0.5">✓</span>
+                    <p className="leading-relaxed"><strong className="text-gray-900">Kids' Kit Bags:</strong> Complete, high-quality sets to get your young star started.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-orange-600 text-lg font-semibold mt-0.5">✓</span>
+                    <p className="leading-relaxed"><strong className="text-gray-900">Pro Accessories:</strong> Balls, batting gloves, keeping gloves, guards, and all other essential gear.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Available Now Section */}
-      <section className="py-20">
+      <section id="shop" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: currentPalette.text }}>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
               Available Now
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg text-gray-600">
               Authentic cricket jerseys from top teams and players
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Official Jerseys */}
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: currentPalette.secondary }}>
-                <ShoppingCartIcon className="w-8 h-8" style={{ color: currentPalette.primary }} />
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Official Jerseys Card */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+              <div className="mb-6 flex justify-center">
+                <div className="w-12 h-12 bg-blue-200 rounded-lg flex items-center justify-center">
+                  <ShoppingCartIcon className="w-6 h-6 text-blue-600" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: currentPalette.text }}>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">
                 Official Jerseys
               </h3>
-              <p className="text-gray-600 mb-6">
-                Premium quality cricket jerseys from India, Australia, and international teams
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Premium quality cricket jerseys from India, Australia, and international teams.
               </p>
-              <a href="#" className="font-semibold" style={{ color: currentPalette.primary }}>
-                Browse Collection →
+              <a href="#" className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all">
+                <span>Browse Collection</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </a>
             </div>
 
-            {/* Multiple Sizes */}
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: currentPalette.secondary }}>
-                <div className="w-8 h-8" style={{ color: currentPalette.primary }}>
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h18v2H3v-2zm0 4h18v2H3v-2z"/>
+            {/* Multiple Sizes Card */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+              <div className="mb-6 flex justify-center">
+                <div className="w-12 h-12 bg-blue-200 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
                 </div>
               </div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: currentPalette.text }}>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">
                 Multiple Sizes
               </h3>
-              <p className="text-gray-600 mb-6">
-                Available in S, M, L, XL, 2XL to ensure the perfect fit for every player
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Available in S, M, L, XL, 2XL to ensure the perfect fit for every player.
               </p>
-              <a href="#" className="font-semibold" style={{ color: currentPalette.primary }}>
-                Find Your Size →
+              <a href="#" className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all">
+                <span>Find Your Size</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </a>
             </div>
 
-            {/* Fast Shipping */}
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: currentPalette.secondary }}>
-                <TruckIcon className="w-8 h-8" style={{ color: currentPalette.primary }} />
+            {/* Fast Shipping Card */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+              <div className="mb-6 flex justify-center">
+                <div className="w-12 h-12 bg-green-200 rounded-lg flex items-center justify-center">
+                  <TruckIcon className="w-6 h-6 text-green-600" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: currentPalette.text }}>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">
                 Fast Shipping
               </h3>
-              <p className="text-gray-600 mb-6">
-                Quick and secure delivery to get your jersey ready for the next match
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Quick and secure delivery to get your jersey ready for the next match.
               </p>
-              <a href="#" className="font-semibold" style={{ color: currentPalette.primary }}>
-                Shop Now →
+              <a href="#" className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all">
+                <span>Shop Now</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Coming Soon Section */}
-      <section className="py-20" style={{ backgroundColor: currentPalette.accent }}>
+      {/* Product Carousel Section */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 rounded-full text-white text-sm font-medium mb-6"
-                 style={{ backgroundColor: '#F97316' }}>
-              Coming Soon
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: currentPalette.text }}>
-              Exciting Launches Ahead
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              Shop Our Collection
             </h2>
-            <p className="text-xl text-gray-600">
-              We&apos;re expanding our collection with premium cricket accessories. Be the first to know when they launch!
+            <p className="text-lg text-gray-600">
+              Browse our authentic cricket jerseys
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Custom Cricket Bats */}
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="w-16 h-16 mb-6 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: '#DBEAFE' }}>
-                <div className="w-8 h-8" style={{ color: '#3B82F6' }}>
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: currentPalette.text }}>
-                Custom Cricket Bats
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Handcrafted bats customized to your specifications. Choose wood type, weight, grip, and personalized engravings.
-              </p>
-              <div className="text-sm font-semibold" style={{ color: '#3B82F6' }}>
-                Launching December 2025
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                  <div key={slideIndex} className="min-w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-2">
+                      {products
+                        .slice(
+                          slideIndex * productsPerSlide,
+                          slideIndex * productsPerSlide + productsPerSlide
+                        )
+                        .map((product) => (
+                          <div
+                            key={product.id}
+                            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                          >
+                            {/* Product Image */}
+                            <div className="relative bg-gray-100 aspect-square">
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover"
+                              />
+                              {/* Carousel indicators on image */}
+                              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                                <div className="w-2 h-2 bg-white rounded-full"></div>
+                                <div className="w-2 h-2 bg-white/50 rounded-full"></div>
+                                <div className="w-2 h-2 bg-white/50 rounded-full"></div>
+                              </div>
+                              {/* Arrow indicator */}
+                              <div className="absolute right-4 top-1/2 transform -translate-y-1/2 opacity-50">
+                                <ChevronRightIcon className="w-6 h-6 text-gray-600" />
+                              </div>
+                            </div>
+
+                            {/* Product Info */}
+                            <div className="p-6">
+                              <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                                {product.name} - {product.size}
+                              </h3>
+
+                              {/* Tags */}
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                <span className="px-3 py-1 bg-purple-600 text-white text-xs font-medium rounded-full">
+                                  age group {product.ageGroup}
+                                </span>
+                                <span className="px-3 py-1 bg-purple-600 text-white text-xs font-medium rounded-full">
+                                  size {product.size}
+                                </span>
+                              </div>
+
+                              {/* Price */}
+                              <div className="mb-4">
+                                <span className="text-2xl font-bold text-gray-900">
+                                  ${product.price}
+                                </span>
+                              </div>
+
+                              {/* Add to Cart Button */}
+                              <button className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                                Add to Cart
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Cricket Lane Rentals */}
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="w-16 h-16 mb-6 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: '#DCFCE7' }}>
-                <div className="w-8 h-8" style={{ color: '#16A34A' }}>
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: currentPalette.text }}>
-                Cricket Lane Rentals
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Book premium cricket lanes by the hour. Perfect for practice sessions, tournaments, and friendly matches.
-              </p>
-              <div className="text-sm font-semibold" style={{ color: '#16A34A' }}>
-                Launching March 2026
-              </div>
-            </div>
+            {/* Navigation Arrows */}
+            {totalSlides > 1 && (
+              <>
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-3 shadow-lg hover:bg-gray-50 transition-colors z-10"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeftIcon className="w-6 h-6 text-gray-900" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-3 shadow-lg hover:bg-gray-50 transition-colors z-10"
+                  aria-label="Next slide"
+                >
+                  <ChevronRightIcon className="w-6 h-6 text-gray-900" />
+                </button>
+              </>
+            )}
 
-            {/* Training Equipment */}
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="w-16 h-16 mb-6 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: '#F3E8FF' }}>
-                <StarIcon className="w-8 h-8" style={{ color: '#8B5CF6' }} />
+            {/* Carousel Dots */}
+            {totalSlides > 1 && (
+              <div className="flex justify-center gap-2 mt-8">
+                {Array.from({ length: totalSlides }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentSlide
+                        ? 'bg-gray-900 w-8'
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: currentPalette.text }}>
-                Training Equipment
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Cricket balls, stumps, coaching aids, and practice gear. Everything you need to improve your game.
-              </p>
-              <div className="text-sm font-semibold" style={{ color: '#8B5CF6' }}>
-                Launching December 2025
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section id="about" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: currentPalette.text }}>
-              Why Choose Gully Sports?
-            </h2>
-            <p className="text-xl text-gray-600">
-              We&apos;re different from other cricket equipment stores
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: currentPalette.secondary }}>
-                <ShieldCheckIcon className="w-8 h-8" style={{ color: currentPalette.primary }} />
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: currentPalette.text }}>
-                100% Authentic
-              </h3>
-              <p className="text-gray-600 text-sm">
-                All our products are genuine and authentic
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: currentPalette.secondary }}>
-                <TruckIcon className="w-8 h-8" style={{ color: currentPalette.primary }} />
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: currentPalette.text }}>
-                Fast Shipping
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Quick and secure delivery across the US
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: currentPalette.secondary }}>
-                <CheckIcon className="w-8 h-8" style={{ color: currentPalette.primary }} />
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: currentPalette.text }}>
-                Try Before Buy
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Test our bats before making a purchase
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-                   style={{ backgroundColor: currentPalette.secondary }}>
-                <StarIcon className="w-8 h-8" style={{ color: currentPalette.primary }} />
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: currentPalette.text }}>
-                Expert Knowledge
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Cricket specialists with years of experience
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-20" style={{ backgroundColor: currentPalette.accent }}>
@@ -599,55 +740,6 @@ export default function HomePage() {
                 <h4 className="font-semibold mb-2" style={{ color: currentPalette.text }}>Contact Us</h4>
                 <p className="text-gray-600 text-sm">For any questions about returns or exchanges, contact us at 408 677 0734 or www.gullysports.store</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Get Early Access Section */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Get Early Access
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Join our exclusive list and be the first to know when we launch new products
-          </p>
-          <p className="text-lg text-gray-300 mb-8">
-            Plus, get 10% off your first purchase of any new product!
-          </p>
-
-          <div className="bg-gray-800 rounded-xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold mb-6">What interests you most?</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-              {['Custom Cricket Bats', 'Cricket Lane Rentals', 'Training Equipment', 'New Product Launches', 'Exclusive Discounts'].map((interest) => (
-                <label key={interest} className="flex items-center space-x-2 text-left">
-                  <input type="checkbox" className="rounded" />
-                  <span className="text-sm">{interest}</span>
-                </label>
-              ))}
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              <input
-                type="text"
-                placeholder="Your name"
-                className="px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400"
-              />
-              <input
-                type="email"
-                placeholder="Your email"
-                className="px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400"
-              />
-            </div>
-            
-            <button className="w-full py-4 px-8 font-semibold rounded-lg text-white text-lg"
-                    style={{ backgroundColor: currentPalette.primary }}>
-              Notify Me
-            </button>
-            
-            <div className="mt-4 text-sm text-gray-400">
-              ✓ Early access to new launches ✓ Exclusive discounts ✓ No spam, unsubscribe anytime
             </div>
           </div>
         </div>
